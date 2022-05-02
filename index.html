@@ -30,11 +30,11 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="data/uadstickers_osm_checked_1.js"></script>
+        <script src="data/uadstickers_osm_checkeduadstickers_osm_checked_1.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[33.95567851986189,-83.38210085128063],[33.96191761986202,-83.36983012728987]]);
+        }).fitBounds([[33.95696099542755,-83.3773814109234],[33.960890095427544,-83.37185173930821]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -54,7 +54,7 @@
         });
         layer_ESRIWorldTopo_0;
         map.addLayer(layer_ESRIWorldTopo_0);
-        function pop_uadstickers_osm_checked_1(feature, layer) {
+        function pop_uadstickers_osm_checkeduadstickers_osm_checked_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['Business'] !== null ? autolinker.link(feature.properties['Business'].toLocaleString()) : '') + '</td>\
@@ -66,7 +66,7 @@
                         <td colspan="2">' + (feature.properties['Filled out by'] !== null ? autolinker.link(feature.properties['Filled out by'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['AADM Verified'] !== null ? autolinker.link(feature.properties['AADM Verified'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Sticker shown?'] !== null ? autolinker.link(feature.properties['Sticker shown?'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['Address'] !== null ? autolinker.link(feature.properties['Address'].toLocaleString()) : '') + '</td>\
@@ -105,54 +105,89 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_uadstickers_osm_checked_1_0(feature) {
-            switch(String(feature.properties['AADM Verified'])) {
+        function style_uadstickers_osm_checkeduadstickers_osm_checked_1_0(feature) {
+            switch(String(feature.properties['Sticker shown?'])) {
+                case '-':
+                    return {
+                pane: 'pane_uadstickers_osm_checkeduadstickers_osm_checked_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,43,101,1.0)',
+                interactive: true,
+            }
+                    break;
                 case 'No':
                     return {
-                pane: 'pane_uadstickers_osm_checked_1',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/red-marker.svg',
-            iconSize: [38.0, 38.0]
-        }),
+                pane: 'pane_uadstickers_osm_checkeduadstickers_osm_checked_1',
+                radius: 3.999999999999997,
+                opacity: 1,
+                color: 'rgba(128,17,25,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,30,42,1.0)',
                 interactive: true,
             }
                     break;
                 case 'Yes':
                     return {
-                pane: 'pane_uadstickers_osm_checked_1',
+                pane: 'pane_uadstickers_osm_checkeduadstickers_osm_checked_1',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/I4GX0hN-blue-peace-symbol-vector.svg',
-            iconSize: [38.0, 38.0]
         }),
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_uadstickers_osm_checkeduadstickers_osm_checked_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(185,205,68,1.0)',
                 interactive: true,
             }
                     break;
             }
         }
-        map.createPane('pane_uadstickers_osm_checked_1');
-        map.getPane('pane_uadstickers_osm_checked_1').style.zIndex = 401;
-        map.getPane('pane_uadstickers_osm_checked_1').style['mix-blend-mode'] = 'normal';
-        var layer_uadstickers_osm_checked_1 = new L.geoJson(json_uadstickers_osm_checked_1, {
+        map.createPane('pane_uadstickers_osm_checkeduadstickers_osm_checked_1');
+        map.getPane('pane_uadstickers_osm_checkeduadstickers_osm_checked_1').style.zIndex = 401;
+        map.getPane('pane_uadstickers_osm_checkeduadstickers_osm_checked_1').style['mix-blend-mode'] = 'normal';
+        var layer_uadstickers_osm_checkeduadstickers_osm_checked_1 = new L.geoJson(json_uadstickers_osm_checkeduadstickers_osm_checked_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_uadstickers_osm_checked_1',
-            layerName: 'layer_uadstickers_osm_checked_1',
-            pane: 'pane_uadstickers_osm_checked_1',
-            onEachFeature: pop_uadstickers_osm_checked_1,
+            dataVar: 'json_uadstickers_osm_checkeduadstickers_osm_checked_1',
+            layerName: 'layer_uadstickers_osm_checkeduadstickers_osm_checked_1',
+            pane: 'pane_uadstickers_osm_checkeduadstickers_osm_checked_1',
+            onEachFeature: pop_uadstickers_osm_checkeduadstickers_osm_checked_1,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_uadstickers_osm_checked_1_0(feature));
+                return L.circleMarker(latlng, style_uadstickers_osm_checkeduadstickers_osm_checked_1_0(feature));
             },
         });
-        bounds_group.addLayer(layer_uadstickers_osm_checked_1);
-        map.addLayer(layer_uadstickers_osm_checked_1);
+        bounds_group.addLayer(layer_uadstickers_osm_checkeduadstickers_osm_checked_1);
+        map.addLayer(layer_uadstickers_osm_checkeduadstickers_osm_checked_1);
         setBounds();
         </script>
     </body>
